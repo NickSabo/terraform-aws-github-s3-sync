@@ -12,11 +12,13 @@ Terraform module that sets up everything needed to sync a GitHub repo to an S3 b
 ## Usage
 
 ```hcl
+# First repo — creates the OIDC provider
 module "repo_sync" {
-  source      = "github.com/NickSabo/terraform-aws-github-s3-sync"
-  github_org  = "NickSabo"
-  github_repo = "my-repo"
-  bucket_name = "my-repo-code"
+  source               = "github.com/NickSabo/terraform-aws-github-s3-sync"
+  github_org           = "NickSabo"
+  github_repo          = "my-repo"
+  bucket_name          = "my-repo-code"
+  create_oidc_provider = true
 }
 ```
 
@@ -72,7 +74,7 @@ module "second_repo" {
 | `github_repo` | Repository name | (required) |
 | `bucket_name` | S3 bucket name | (required) |
 | `branch` | Branch allowed to sync | `"main"` |
-| `create_oidc_provider` | Create the GitHub OIDC provider | `true` |
+| `create_oidc_provider` | Create the GitHub OIDC provider (set `true` on first use) | `false` |
 | `enable_versioning` | Enable S3 bucket versioning | `true` |
 
 ## Outputs

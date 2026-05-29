@@ -20,9 +20,9 @@ variable "branch" {
 }
 
 variable "create_oidc_provider" {
-  description = "Whether to create the GitHub OIDC provider. Set to false if one already exists in your account."
+  description = "Whether to create the GitHub OIDC provider. Set to true on first use, then false for subsequent repos."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "enable_versioning" {
